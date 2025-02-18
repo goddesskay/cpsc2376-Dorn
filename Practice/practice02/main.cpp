@@ -112,6 +112,13 @@ int main() {
         std::cout << "Enter your choice: ";
         std::cin >> choice;
 
+         if (std::cin.fail()) {
+            std::cin.clear(); 
+            std::cin.ignore(10000, '\n'); 
+            std::cout << "Invalid input, please enter a number (1-4).\n";
+            continue; 
+        }
+
         switch (choice) {
 
         case 1:
@@ -126,7 +133,11 @@ int main() {
         case 4:
             std::cout << "Bye-Bye!" << std::endl;
             break;
+        default:
+            std::cout << "Invalid choice, try again.\n";
+            break;
         }
-    } while (choice != 4);
+    } 
+    while (choice != 4);
     return 0;
 }
